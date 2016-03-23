@@ -1,0 +1,56 @@
+<div class="wrap">
+    <div id="inputContainer" class="inputDemo" ng-controller="inputController as ctrl" ng-cloak>
+	     
+		<md-card> <img ng-src="img/icon.png" class="md-card-image" alt="icon"> </md-card>
+		 
+		
+	     <h3 class="md-headline">Sign-up for an account</h3>
+	 
+         <md-content layout-padding>
+            <form name="rentalForm" method="post">
+               <md-input-container class="md-block">
+                  <label>First name *</label>
+                  <input required name="userName" ng-model="form.userName">
+                  <div ng-messages="rentalForm.userName.$error">
+                     <div ng-message="required">This is required.</div>
+                  </div>
+               </md-input-container>
+			   
+			    <md-input-container class="md-block">
+                  <label>Last name</label>
+                  <input  name="lastName" ng-model="form.lastName">
+                 
+               </md-input-container>
+			   
+               <md-input-container class="md-block">
+                  <label>Email address *</label>
+                  <input required type="email" name="userEmail" ng-model="form.userEmail"
+                     minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+                  <div ng-messages="rentalForm.userEmail.$error" role="alert">
+                     <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                        Your email must be between 10 and 100 characters long and should be a valid email address.
+                     </div>
+                  </div>
+               </md-input-container>
+			   
+               <md-input-container class="md-block">
+                  <label>Languages spoken</label>
+                  <input  name="userLanguage" ng-model="form.userLanguage" >
+                  
+               </md-input-container>   
+			   
+			   <md-input-container class="md-block">
+					<md-checkbox ng-model="form.term" aria-label="Terms Conditions" class="md-block">
+						I accept the Terms & Conditions
+					</md-checkbox> 
+				</md-input-container> 
+				
+				<md-input-container class="md-block">
+				   <md-button class="md-raised md-primary" class="md-block" ng-click="signUp(form)" ng-disabled="!form.term || rentalForm.$invalid">Sign-up</md-button>
+				</md-input-container>  
+            </form>
+			
+			<p>{{result}}</p>
+         </md-content>
+      </div>
+</div>
